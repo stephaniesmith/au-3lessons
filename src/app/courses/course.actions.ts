@@ -85,7 +85,10 @@ export type CourseActions =
   | CourseLoaded
   | AllCoursesRequested
   | AllCoursesLoaded
-  | CourseSaved;
+  | CourseSaved
+  | LessonsPageRequested
+  | LessonsPageLoaded
+  | LessonsPageCancelled;
 
 
 
