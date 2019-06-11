@@ -14,7 +14,16 @@ export enum CourseActionTypes {
   LessonsPageCancelled = '[Courses API] Lessons Page Cancelled',
 }
 
+export interface PageQuery {
+  pageIndex: number;
+  pageSize: number;
+}
 
+export class LessonsPageRequested implements Action {
+  readonly type = CourseActionTypes.LessonsPageRequested;
+
+  constructor(public payload: { courseId: number, page: PageQuery }) {}
+}
 export class CourseRequested implements Action {
 
   readonly type = CourseActionTypes.CourseRequested;
