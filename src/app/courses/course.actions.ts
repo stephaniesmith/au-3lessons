@@ -8,7 +8,10 @@ export enum CourseActionTypes {
   CourseLoaded = '[Courses API] Course Loaded',
   AllCoursesRequested = '[Courses Home Page] All Courses Requested',
   AllCoursesLoaded = '[Courses API] All Courses Loaded',
-  CourseSaved = '[Edit Course Dialog] Course Saved'
+  CourseSaved = '[Edit Course Dialog] Course Saved',
+  LessonsPageRequested = '[Course Landing Page] Lessons Page Requested',
+  LessonsPageLoaded = '[Courses API] Lessons Page Loaded',
+  LessonsPageCancelled = '[Courses API] Lessons Page Cancelled',
 }
 
 
