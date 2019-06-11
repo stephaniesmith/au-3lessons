@@ -1,6 +1,7 @@
 import {Action} from '@ngrx/store';
 import {Course} from './model/course';
 import {Update} from '@ngrx/entity';
+import { Lesson } from './model/lesson';
 
 
 export enum CourseActionTypes {
@@ -24,6 +25,17 @@ export class LessonsPageRequested implements Action {
 
   constructor(public payload: { courseId: number, page: PageQuery }) {}
 }
+
+export class LessonsPageLoaded implements Action {
+  readonly type = CourseActionTypes.LessonsPageLoaded;
+
+  constructor(public payload: Lesson[]) {}
+}
+
+export class LessonsPageCancelled implements Action {
+  readonly type = CourseActionTypes.LessonsPageCancelled;
+}
+
 export class CourseRequested implements Action {
 
   readonly type = CourseActionTypes.CourseRequested;
@@ -32,7 +44,6 @@ export class CourseRequested implements Action {
 
   }
 }
-
 
 export class CourseLoaded implements Action {
 
