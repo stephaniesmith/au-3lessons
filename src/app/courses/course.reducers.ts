@@ -6,12 +6,11 @@ import {CourseActions, CourseActionTypes} from './course.actions';
 
 export interface CoursesState extends EntityState<Course> {
 
-  allCoursesLoaded:boolean;
+  allCoursesLoaded: boolean;
 
 }
 
-
-export const adapter : EntityAdapter<Course> =
+export const adapter: EntityAdapter<Course> =
   createEntityAdapter<Course>();
 
 
