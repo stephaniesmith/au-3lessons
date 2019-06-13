@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {AllCoursesLoaded, AllCoursesRequested, CourseActionTypes, CourseLoaded, CourseRequested} from './course.actions';
+import {AllCoursesLoaded, AllCoursesRequested, CourseActionTypes, CourseLoaded, CourseRequested, LessonsPageLoaded} from './course.actions';
 import {throwError} from 'rxjs';
 import {catchError, concatMap, exhaustMap, filter, map, mergeMap, withLatestFrom} from "rxjs/operators";
 import {CoursesService} from './services/courses.service';
@@ -21,7 +21,6 @@ export class CourseEffects {
         console.log('error loading course ', err);
         return throwError(err);
       })
-
   );
 
   @Effect()
@@ -37,6 +36,14 @@ export class CourseEffects {
         return throwError(err);
       })
     );
+
+    @Effect()
+    loadLessonsPage$ = this.actions$
+      .pipe(
+        ofType<AllCoursesRequested>(CourseActionTypes.LessonsPageRequested),
+        mergeMap(({ payload }) => this.coursesService.findLessons(payload.courseId, payload.page.pageIndex, payload.page.pageSize)),
+        map(lessons => new LessonsPageLoaded(lessons))
+      );
 
 
   constructor(private actions$ :Actions, private coursesService: CoursesService,
