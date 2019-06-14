@@ -26,6 +26,8 @@ const initialLessonsState = adapter.getInitialState({
 
 export function lessonsReducer(state = initialLessonsState, { type, payload }: CourseActions) {
   switch (type) {
+    case CourseActionTypes.LessonsPageCancelled:
+      return { ...state, loading: false };
     case CourseActionTypes.LessonsPageRequested:
       return { ...state, loading: true };
     case CourseActionTypes.LessonsPageLoaded:
