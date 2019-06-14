@@ -45,12 +45,20 @@ export class CourseComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-
+        this.paginator.page
+            .pipe(
+                tap(() => this.loadLessonsPage())
+            ).subscribe();
 
     }
 
     loadLessonsPage() {
+        const newPage: PageQuery = {
+            pageIndex: this.paginator.pageIndex,
+            pageSize: this.paginator.pageSize
+        };
 
+        this.dataSource.loadLessons(this.course.id, newPage);
     }
 
 
