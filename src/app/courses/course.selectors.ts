@@ -43,3 +43,8 @@ export const selectLessonsPage = (courseId: number, { pageIndex, pageSize }: Pag
     return allLessons.filter(lesson => lesson.courseId === courseId).slice(start, end);
   }
 );
+
+export const selectLessonsLoading = createSelector(
+  selectLessonsState,
+  ({ loading }) => loading
+);
